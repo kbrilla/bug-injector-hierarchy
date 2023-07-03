@@ -42,18 +42,18 @@ export class App {
   injector = inject(Injector);
 
   ngOnInit() {
-    this.dialog.open(TestCompo, { injector: this.injector });
-    this.dialog.open(TestCompo, {
-      injector: Injector.create({
-        providers: [
-          {
-            provide: token,
-            useValue: 'ovverrided token from App',
-          },
-        ],
-        parent: this.injector,
-      }),
-    });
+    // this.dialog.open(TestCompo, { injector: this.injector });
+    // this.dialog.open(TestCompo, {
+    //   injector: Injector.create({
+    //     providers: [
+    //       {
+    //         provide: token,
+    //         useValue: 'ovverrided token from App',
+    //       },
+    //     ],
+    //     parent: this.injector,
+    //   }),
+    // });
   }
 }
 
@@ -61,7 +61,7 @@ export class App {
   selector: 'my-route',
   standalone: true,
   imports: [CommonModule, DialogModule, RouterOutlet],
-  // providers: [{ provide: token, useValue: token2 }],
+  // providers: [{ provide: token, useExisting: token2 }],
   template: `
 <p>value of token: {{token}}</p>
 <p>value of token2: {{token2}}</p>
